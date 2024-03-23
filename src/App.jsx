@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Products } from "./components/Products"
 import { products as initialProducts } from "./mocks/products.json"
 import { Header } from "./components/Header"
+import { Footer } from "./components/Footer"
 
 //Crear un custom hook, para separar la logica con la que se desarrolla los filtros
 function useFilters(){
@@ -35,6 +36,7 @@ function App() {
       <>
         <Header changeFilters={ setfilters }/>
         <Products products={ filteredProducts }/>
+        <Footer/>
       </>
   )
 }
