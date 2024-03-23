@@ -3,9 +3,8 @@ import { Products } from "./components/Products"
 import { products as initialProducts } from "./mocks/products.json"
 import { Header } from "./components/Header"
 
-
-function App() {
-  const [products] = useState(initialProducts)
+//Crear un custom hook, para separar la logica con la que se desarrolla los filtros
+function useFilters(){
   const [ filters, setfilters] = useState({
     category: 'all',
     minPrice: 0
@@ -21,6 +20,14 @@ function App() {
       )
     })
   }
+
+  return { filterProducts, setfilters }
+}
+
+function App() {
+  const [products] = useState(initialProducts)
+
+  const { filterProducts, setfilters }= useFilters()
 
   const filteredProducts = filterProducts(products)
 
