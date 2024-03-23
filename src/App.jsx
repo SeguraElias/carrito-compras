@@ -3,6 +3,7 @@ import { Products } from "./components/Products"
 import { products as initialProducts } from "./mocks/products.json"
 import { Header } from "./components/Header"
 import { Footer } from "./components/Footer"
+import { IS_DEVELOPMENT } from "../config"
 
 //Crear un custom hook, para separar la logica con la que se desarrolla los filtros
 function useFilters(){
@@ -22,13 +23,13 @@ function useFilters(){
     })
   }
 
-  return { filterProducts, setfilters }
+  return { filters, filterProducts, setfilters }
 }
 
 function App() {
   const [products] = useState(initialProducts)
 
-  const { filterProducts, setfilters }= useFilters()
+  const { filters, filterProducts, setfilters }= useFilters()
 
   const filteredProducts = filterProducts(products)
 
@@ -36,7 +37,7 @@ function App() {
       <>
         <Header changeFilters={ setfilters }/>
         <Products products={ filteredProducts }/>
-        <Footer/>
+        { IS_DEVELOPMENT && <Footer filters={ filters }/> }
       </>
   )
 }

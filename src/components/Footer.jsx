@@ -1,10 +1,14 @@
 import './Footer.css'
 
-export function Footer() {
+export function Footer({ filters }) {
     return (
         <footer className='footer'>
-            <h4><span>Elias Segura</span></h4>
-            <h5>Tienda Online Mi Tiendita</h5>
+            {
+                JSON.stringify(filters, null, 2)
+            }
+
+            {/* <h4><span>Elias Segura</span></h4>
+            <h5>© The best</h5> */}
         </footer>
     )
 }
