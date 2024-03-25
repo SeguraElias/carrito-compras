@@ -9,7 +9,7 @@ import { useFilters } from "./hooks/useFilters"
 function App() {
   const [products] = useState(initialProducts)
 
-  const { filters, filterProducts, setfilters }= useFilters()
+  const { filters, filterProducts }= useFilters()
 
   const filteredProducts = filterProducts(products)
 

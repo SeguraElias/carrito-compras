@@ -4,7 +4,7 @@ import { useFilters } from '../hooks/useFilters'
 
 export function Filters() {
 
-    const { setFilters } = useFilters()
+    const { filters, setFilters } = useFilters()
 
     const [minPrice, setMinPrice] = useState(0)
 
@@ -31,14 +31,14 @@ export function Filters() {
     return (
         <section className='filtros'>
             <div>
-                <label htmlFor={minPriceFilterId}></label>
+                <label htmlFor={minPriceFilterId}>Precio</label>
                 <input 
                     type="range" 
                     id={minPriceFilterId} 
                     min="0" 
                     max="1000"
                     onChange={handleChangePrice}/>
-                <span>${ minPrice }</span>
+                <span>${ filters.minPrice }</span>
             </div>
 
             <div>
