@@ -1,18 +1,14 @@
-import { useFilters } from '../hooks/useFilters'
+// import { useCart } from '../hooks/useCart';
+// import { useFilters } from '../hooks/useFilters';
 import './Footer.css'
 
-export function Footer() {
-
-    const { filters } = useFilters()
-    
-    return (
-        <footer className='footer'>
-            {
-                JSON.stringify(filters, null, 2)
-            }
-
-            {/* <h4><span>Elias Segura</span></h4>
-            <h5>© The best</h5> */}
-        </footer>
-    )
+export function Footer () {
+  // const { filters } = useFilters();
+  // const { cart } = useCart();
+  return (
+    <footer className='footer'>
+      <h4><span>Nestor Rivas</span></h4>
+      <h5>Shopping Cart con useContext & useReducer</h5>
+    </footer>
+  )
 }
