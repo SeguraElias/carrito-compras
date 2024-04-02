@@ -25,28 +25,38 @@ const reducer = (state, action) => {
         const newState = structuredClone(state)
         
         newState[productInCartIndex].quantity += 1
+        updateLocalStorage(newState)
         return newState
       }
 
       //si el producto no esta en el carrito
-      return [
+      const newState = [
         ...state,
         {
           ...actionPayload,
           quantity: 1
         }
       ]
+
+      updateLocalStorage(newState)
+      return newState
+
     }
 
     case 'REMOVE_FROM_CART': {
       const { id } = actionPayload
-      return state.filter(item => item.id != id)
+      const newState = state.filter(item => item.id != id)
+      updateLocalStorage(newState)
+      return newState
     }
 
     case 'CLEAR_CART': {
-      return initialState
+      updateLocalStorage(initialState)
+      return initialState // se hace un reset
     }
   }
+
+  return state
 }
 
 
