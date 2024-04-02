@@ -3,7 +3,13 @@ import { createContext, useReducer, useState } from "react";
 //1. Crear el contexto
 export const CartContext = createContext();
 
-const initialState = []
+//modificar el estado inicial para guardar el de localStorage, o sea, lo que hay en el carrito
+const initialState = JSON.parse(window.localStorage.getItem('cart')) || []
+
+// actualizar localStorage con el state para el carrito
+export const updateLocalStorage = state => {
+  window.localStorage.setItem('cart', JSON.stringify(state))
+}
 
 const reducer = (state, action) => {
   const { type: actionType, payload: actionPayload } = action
