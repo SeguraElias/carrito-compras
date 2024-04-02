@@ -29,6 +29,10 @@ export function Cart() {
   //traemos la variable de estado que se llame addToCart
   const { cart, clearCart, addToCart } = useCart();
 
+  const cantProductos = cart.reduce((total, product) => total + product.quantity, 0)
+
+  const totalPagar = cart.reduce((total, product) => total + product.price * product.quantity, 0)
+
   return (
     <>
       <label className="cart-button" htmlFor={cartCheckboxId}>
@@ -48,6 +52,13 @@ export function Cart() {
             ))
           }
         </ul>
+
+        <p>
+          cantidad: { cantProductos }
+        </p>
+        <p>
+          precio total: ${ totalPagar }
+        </p>
 
         <button style={{ background: "#E36414" }} onClick={clearCart}>
           <ClearCartIcon />

@@ -51,8 +51,9 @@ const reducer = (state, action) => {
     }
 
     case 'CLEAR_CART': {
-      updateLocalStorage(initialState)
-      return initialState // se hace un reset
+      const newState = []
+      updateLocalStorage(newState)
+      return newState
     }
   }
 
